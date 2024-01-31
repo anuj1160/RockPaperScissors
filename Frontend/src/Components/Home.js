@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Home = () => {
+const Home = () => {
     return (
         <div>
             <h1>
@@ -8,15 +8,20 @@ export const Home = () => {
             </h1>
             <div>
                 <label>
-                    Number of Rounds 
+                    Number of Rounds :  
                     <select name="Rounds">
-                        <option value="3">3</option>
-                        <option value="5">5</option>
-                        <option value="7">7</option>
+                        <option value="3"> 3</option>
+                        <option value="5"> 5</option>
+                        <option value="7"> 7</option>
                     </select>
-                </label>
+                </label>    
+            </div>
+            <div>
+                <button type="button">Start Game</button>
             </div>
 
         </div>
     )
 }
+
+export default Home;
