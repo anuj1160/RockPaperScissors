@@ -1,8 +1,7 @@
 import "./App.css";
 
 function App() {
-  return <div className="App">Hello dosto kya haal chaal sb bdiya koi nhi
-  </div>;
+  return <div className="App">1+1=2</div>;
 }
 
 export default App;
