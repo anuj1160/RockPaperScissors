@@ -8,7 +8,7 @@ export const Home = () => {
             </h1>
             <div>
                 <label>
-                    Number of Rounds Hello
+                    Number of Rounds 
                     <select name="Rounds">
                         <option value="3">3</option>
                         <option value="5">5</option>
