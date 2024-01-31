@@ -4,7 +4,7 @@ const Home = () => {
     return (
         <div>
             <h1>
-                Welcome Mridul!!
+                Welcome Mridul!
             </h1>
             <div>
                 <label>
