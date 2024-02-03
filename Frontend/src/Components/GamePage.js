@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import paper from "../utils/paper.png";
 import rock from "../utils/rock.png";
 import scis from "../utils/scissors.png";
+import EndPage from "./EndPage";
 function GamePage() {
   const p = 3;
   const [val, SetVal] = useState(paper);
@@ -25,23 +26,17 @@ function GamePage() {
     // console.log(x);
     // console.log(arr[x]);
     setComputerVal(arr[x]);
-    SetRound(round + 1);
-    console.log(round);
+    // console.log(round);
     if (scoreUpdate(val, computerVal)) setUserScore(userScore + 1);
     if (scoreUpdate(computerVal, val)) setCpuScore(cpuScore + 1);
     // isGameOver();
+    
     if (round == p) {
       SetOver(true);
     }
   };
   if (over == true) {
-    if (userScore > cpuScore) {
-      return <div>You Win Score</div>;
-    } else if (userScore == cpuScore) {
-      return <div>Draw</div>;
-    } else {
-      return <div>You Lose</div>;
-    }
+    return <EndPage userScore={userScore} cpuScore={cpuScore} />;
   } else {
     return (
       <div>
@@ -52,6 +47,7 @@ function GamePage() {
               alt=""
               srcset=""
               onClick={() => {
+                SetRound(round + 1);
                 handleOption(paper);
               }}
             />
@@ -62,6 +58,7 @@ function GamePage() {
               alt=""
               srcset=""
               onClick={() => {
+                SetRound(round + 1);
                 handleOption(rock);
               }}
             />
@@ -72,6 +69,7 @@ function GamePage() {
               alt=""
               srcset=""
               onClick={() => {
+                SetRound(round + 1);
                 handleOption(scis);
               }}
             />
