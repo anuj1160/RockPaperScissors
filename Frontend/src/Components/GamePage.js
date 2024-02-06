@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import paper from "../utils/paper.png";
 import rock from "../utils/rock.png";
-import scis from "../utils/scissors.png";
+import scis from "../utils/kenchi.jpg";
 import EndPage from "./EndPage";
+
 function GamePage() {
   const p = 3;
   const [val, SetVal] = useState(paper);
@@ -10,78 +11,70 @@ function GamePage() {
   const [cpuScore, setCpuScore] = useState(0);
   const [round, SetRound] = useState(0);
   const arr = [paper, rock, scis];
-  //   SetVal(paper);
   const [computerVal, setComputerVal] = useState(paper);
   const [over, SetOver] = useState(false);
-  const isGameOver = () => {};
   const scoreUpdate = (x, y) => {
-    if (x == paper && y == rock) return true;
-    if (x == rock && y == scis) return true;
-    if (x == scis && y == paper) return true;
+    if (x === paper && y === rock) return true;
+    if (x === rock && y === scis) return true;
+    if (x === scis && y === paper) return true;
     return false;
   };
+
   const handleOption = (userVal) => {
     SetVal(userVal);
     let x = Math.floor(Math.random() * 3);
-    // console.log(x);
-    // console.log(arr[x]);
     setComputerVal(arr[x]);
-    // console.log(round);
-    if (scoreUpdate(val, computerVal)) setUserScore(userScore + 1);
-    if (scoreUpdate(computerVal, val)) setCpuScore(cpuScore + 1);
-    // isGameOver();
+    // if (scoreUpdate(val, computerVal)) setUserScore(userScore + 1);
+    // if (scoreUpdate(computerVal, val)) setCpuScore(cpuScore + 1);
+      if (scoreUpdate(val, computerVal)) setUserScore(userScore + 1);
+      if (scoreUpdate(computerVal, val)) setCpuScore(cpuScore + 1);
     
+    SetRound(round + 1);
     if (round == p) {
       SetOver(true);
     }
   };
+  
   if (over == true) {
     return <EndPage userScore={userScore} cpuScore={cpuScore} />;
   } else {
     return (
-      <div>
-        <div>
+      <div className="flex flex-col items-center justify-center h-screen bg-gray-200">
+        <div className="flex space-x-4 mb-8">
           <span>
             <img
               src={paper}
               alt=""
-              srcset=""
-              onClick={() => {
-                SetRound(round + 1);
-                handleOption(paper);
-              }}
+              onClick={() => handleOption(paper)}
+              className="cursor-pointer hover:opacity-80 transition-opacity duration-300 rounded-full w-32"
             />
           </span>
           <span>
             <img
               src={rock}
               alt=""
-              srcset=""
-              onClick={() => {
-                SetRound(round + 1);
-                handleOption(rock);
-              }}
+              onClick={() => handleOption(rock)}
+              className="cursor-pointer hover:opacity-80 transition-opacity duration-300 rounded-full w-32"
             />
           </span>
           <span>
             <img
               src={scis}
               alt=""
-              srcset=""
-              onClick={() => {
-                SetRound(round + 1);
-                handleOption(scis);
-              }}
+              onClick={() => handleOption(scis)}
+              className="cursor-pointer hover:opacity-80 transition-opacity duration-300 rounded-full w-32"
             />
           </span>
         </div>
-        <div>
-          <img src={val} alt="" srcset="" />;
-        </div>
-        <div>
-          <img src={computerVal} alt="" />
+        <div className="flex items-center">
+          <img src={val} alt="" className="w-32" />
+          {userScore}
+          <div className="mx-8 font-bold text-xl text-gray-700">VS</div>
+          <img src={computerVal} alt="" className="w-32" />
+          {cpuScore}
         </div>
       </div>
+      
     );
   }
 }
